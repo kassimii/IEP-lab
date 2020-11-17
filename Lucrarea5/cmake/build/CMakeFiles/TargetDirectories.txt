@@ -1,0 +1,3 @@
+/home/kassimii/IEP/Lucrarea5/cmake/build/CMakeFiles/rebuild_cache.dir
+/home/kassimii/IEP/Lucrarea5/cmake/build/CMakeFiles/edit_cache.dir
+/home/kassimii/IEP/Lucrarea5/cmake/build/CMakeFiles/lucrarea5.dir
