@@ -1,0 +1,1 @@
+/usr/bin/g++     CMakeFiles/my-project.dir/home/kassimii/IEP/Lucrarea4/code.cpp.o  -o my-project 
