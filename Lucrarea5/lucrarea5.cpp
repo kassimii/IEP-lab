@@ -1,5 +1,4 @@
 #include <iostream>
-#include <algorithm>
 
 class Sweetener{
     private:
@@ -16,7 +15,7 @@ Sweetener::Sweetener(std::string typeOfSweetener):
     }
 
 
-class Bevarage{
+class Beverage{
     protected:
         std::string name;
         double price;
@@ -24,26 +23,26 @@ class Bevarage{
         Sweetener *sweetener;
     
     public:
-        Bevarage(std::string name, double price, int size, Sweetener *sweetener);
-        Bevarage(const Bevarage& rhs);
-        Bevarage& operator=(const Bevarage& rhs);
+        Beverage(std::string name, double price, int size, Sweetener *sweetener);
+        Beverage(const Beverage& rhs);
+        Beverage& operator=(const Beverage& rhs);
         std::string getSweetener(){return sweetener->getTypeOfSweetener();}
 };
 
    
-Bevarage::Bevarage(std::string name, double price, int size, Sweetener *sweetener):
+Beverage::Beverage(std::string name, double price, int size, Sweetener *sweetener):
     name(name),
     price(price),
     size(size),
     sweetener(sweetener){std::cout<<"Name: "<<name<<" Price: "<<price<<" Size: "<<size<<" Sweetener: "<<sweetener->getTypeOfSweetener()<<std::endl;}
 
-Bevarage::Bevarage(const Bevarage& rhs):
+Beverage::Beverage(const Beverage& rhs):
     name(rhs.name),
     price(rhs.price),
     size(rhs.size),
     sweetener(rhs.sweetener){std::cout<<"Name: "<<name<<" Price: "<<price<<" Size: "<<size<<" Sweetener: "<<sweetener->getTypeOfSweetener()<<std::endl;}
 
-Bevarage& Bevarage::operator=(const Bevarage& rhs){
+Beverage& Beverage::operator=(const Beverage& rhs){
     this->name=rhs.name;
     this->price=rhs.price;
     this->size=rhs.size;
@@ -59,7 +58,7 @@ Bevarage& Bevarage::operator=(const Bevarage& rhs){
     return *this;
 }
 
-class Coffee : public Bevarage{
+class Coffee : public Beverage{
     private:
         int shotsOfCoffee;
     
@@ -71,20 +70,20 @@ class Coffee : public Bevarage{
 };
 
 Coffee::Coffee(std::string name, double price, int size, Sweetener *sweetener, int shotsOfCoffee):
-    Bevarage(name, price, size, sweetener),
+    Beverage(name, price, size, sweetener),
     shotsOfCoffee(shotsOfCoffee){
         std::cout<<"Name: "<<name<<" Price: "<<price<<" Size: "<<size<<" Sweetener: "<<sweetener->getTypeOfSweetener()<<" Shots of coffee: "<<shotsOfCoffee<<std::endl;
     }
 
 //item 12
 Coffee::Coffee(const Coffee& rhs): 
-    Bevarage(rhs),
+    Beverage(rhs),
     shotsOfCoffee(rhs.shotsOfCoffee){
         std::cout<<"Name: "<<name<<" Price: "<<price<<" Size: "<<size<<" Sweetener: "<<sweetener->getTypeOfSweetener()<<" Shots of coffee: "<<shotsOfCoffee<<std::endl;
     }
 
 Coffee& Coffee::operator=(const Coffee& rhs){
-    Bevarage::operator=(rhs);
+    Beverage::operator=(rhs);
     shotsOfCoffee=rhs.shotsOfCoffee;
 
     std::cout<<"Name: "<<name<<" Price: "<<price<<" Size: "<<size<<" Sweetener: "<<sweetener->getTypeOfSweetener()<<" Shots of coffee: "<<shotsOfCoffee<<std::endl;
@@ -104,11 +103,11 @@ int main(){
     std::cout<<"----------------------------------"<<std::endl;
     std::cout<<std::endl;
 
-    Bevarage b1("matcha",14.9, 1, s1);
+    Beverage b1("matcha",14.9, 1, s1);
     std::cout<<"----------------------------------"<<std::endl;
-    Bevarage b2(b1);
+    Beverage b2(b1);
     std::cout<<"----------------------------------"<<std::endl;
-    Bevarage b3("tea",12.9, 2, s2);
+    Beverage b3("tea",12.9, 2, s2);
     b3=b1;
 
     std::cout<<std::endl;
