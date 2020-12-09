@@ -57,7 +57,7 @@ int main(){
     //t1->doingTask();
     t2->doingTask();
 
-    std::shared_ptr<Task> t3(new Task("make uml diagram", "planning", 78, 12), cleanResource);
+    std::shared_ptr<Task> t3(new Task("make uml diagram", "planning", 78, 12));
     std::shared_ptr<Task> t4;
     t4=t3;
     t3->printTaskInfo();
@@ -65,11 +65,11 @@ int main(){
     t4->printTaskInfo();
     t4->doingTask();
 
+    //14
     std::shared_ptr<Task> t5(new Task("launch app", "launching", 11, 3), cleanResource);
     std::shared_ptr<Task> t6(t5);
     t5->printTaskInfo();
     t5->doingTask();
     t6->printTaskInfo();
     t6->doingTask();
-
 }
