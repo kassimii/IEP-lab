@@ -1,6 +1,15 @@
 #include <iostream>
 #include <memory>
 
+class Uncopyable{
+    protected:
+        Uncopyable(){}
+        ~Uncopyable(){}
+    private:
+        Uncopyable(const Uncopyable&);
+        Uncopyable& operator=(const Uncopyable&);
+};
+
 class Task{
     private:
         std::string description;
@@ -14,6 +23,18 @@ class Task{
         int getId();
         void printTaskInfo();
         void doingTask();
+};
+
+//14
+class TaskHandler : private Uncopyable{
+    private:
+        Task taskPtr;
+    public:
+        TaskHandler();
+        explicit TaskHandler(Task task);
+        ~TaskHandler();
+        void getResource(Task t);
+        void freeResource(Task t);
 };
 
 Task::Task():
@@ -40,11 +61,22 @@ void Task::doingTask(){
     std::cout<<"Task "<<id<<" in progress..."<<std::endl;
 }
 
+TaskHandler::TaskHandler():
+    taskPtr(){};
 
-//14
-static void cleanResource(Task *t){
-    t->~Task();
-    std::cout<<"Task "<<t->getId()<<" deleted"<<std::endl;
+TaskHandler::TaskHandler(Task task):
+    taskPtr(task){getResource(taskPtr);}
+
+TaskHandler::~TaskHandler(){
+    freeResource(taskPtr);
+}
+
+void TaskHandler::getResource(Task t){
+    std::cout<<"Aquired resource"<<std::endl;
+}
+
+void TaskHandler::freeResource(Task t){
+    std::cout<<"Freed resource"<<std::endl;
 }
 
 int main(){
@@ -65,11 +97,11 @@ int main(){
     t4->printTaskInfo();
     t4->doingTask();
 
-    //14
-    std::shared_ptr<Task> t5(new Task("launch app", "launching", 11, 3), cleanResource);
-    std::shared_ptr<Task> t6(t5);
-    t5->printTaskInfo();
-    t5->doingTask();
-    t6->printTaskInfo();
-    t6->doingTask();
+    Task t5("launch app", "launching", 11, 3);
+    Task t6("debug app", "debugging", 171, 56);
+
+    TaskHandler th5(t5);
+    TaskHandler th6(t6);
+    // TaskHandler th2;
+    // th2=th1;
 }
