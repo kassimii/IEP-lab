@@ -76,6 +76,7 @@ void TaskHandler::getResource(Task t){
 }
 
 void TaskHandler::freeResource(Task t){
+    t.~Task();
     std::cout<<"Freed resource"<<std::endl;
 }
 
