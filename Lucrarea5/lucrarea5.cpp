@@ -97,6 +97,7 @@ int main(){
     Sweetener *s2 = new Sweetener("none");
     Sweetener *s3 = new Sweetener("stevia");
     Sweetener *s4 = new Sweetener("honey");
+    Sweetener *s5 = new Sweetener("brown sugar");
 
     std::cout<<std::endl;
     std::cout<<"----------------------------------"<<std::endl;
@@ -108,7 +109,8 @@ int main(){
     Beverage b2(b1);
     std::cout<<"----------------------------------"<<std::endl;
     Beverage b3("tea",12.9, 2, s2);
-    b3=b1;
+    Beverage b4("juice",11.9, 1, s5);
+    b4=b3=b1;
 
     std::cout<<std::endl;
     std::cout<<"----------------------------------"<<std::endl;

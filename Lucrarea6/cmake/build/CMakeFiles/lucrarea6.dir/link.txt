@@ -1,0 +1,1 @@
+/usr/bin/g++     CMakeFiles/lucrarea6.dir/home/kassimii/IEP/Lucrarea6/lucrarea6.cpp.o  -o lucrarea6 
